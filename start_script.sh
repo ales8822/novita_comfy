@@ -5,7 +5,7 @@
 ##############################################
 
 apt-get update && apt-get install -y wget git python3 python3-pip
-
+git pull origin master
 echo "wget, git, python3, python3-pip installed successfully!"
 
 ##############################################
