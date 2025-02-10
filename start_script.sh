@@ -221,26 +221,26 @@ fi
 # Step 8: Download flux1-dev checkpoint
 ##############################################
 
-FLUX1_DEV_URL="https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
-FLUX1_DEV_FILE="models/checkpoints/flux1-dev-fp8.safetensors"
+#FLUX1_DEV_URL="https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
+#FLUX1_DEV_FILE="models/checkpoints/flux1-dev-fp8.safetensors"
 
-if [[ ! -d "models/checkpoints" ]]; then
-    echo "Error: models/checkpoints directory does not exist in ComfyUI. Please create it or check your setup." >&2
-    exit 1
-fi
+#if [[ ! -d "models/checkpoints" ]]; then
+#    echo "Error: models/checkpoints directory does not exist in ComfyUI. Please create it or check your setup." >&2
+#    exit 1
+#fi
 
-if [[ ! -f "$FLUX1_DEV_FILE" ]]; then
-    echo "Downloading flux1-dev-fp8.safetensors into $FLUX1_DEV_FILE..."
-    wget -O "$FLUX1_DEV_FILE" "$FLUX1_DEV_URL"
+#if [[ ! -f "$FLUX1_DEV_FILE" ]]; then
+#    echo "Downloading flux1-dev-fp8.safetensors into $FLUX1_DEV_FILE..."
+ #   wget -O "$FLUX1_DEV_FILE" "$FLUX1_DEV_URL"
 
-    if [[ -f "$FLUX1_DEV_FILE" ]]; then
-        echo "flux1-dev-fp8.safetensors successfully downloaded to $FLUX1_DEV_FILE."
-    else
-        echo "Download failed for flux1-dev-fp8.safetensors. Please check the URL and try again." >&2
-        exit 1
-    fi
-else
-    echo "flux1-dev-fp8.safetensors already exists in $FLUX1_DEV_FILE. Skipping download."
-fi
+ #   if [[ -f "$FLUX1_DEV_FILE" ]]; then
+ #       echo "flux1-dev-fp8.safetensors successfully downloaded to $FLUX1_DEV_FILE."
+ #   else
+ #       echo "Download failed for flux1-dev-fp8.safetensors. Please check the URL and try again." >&2
+ #       exit 1
+ #   fi
+#else
+ #   echo "flux1-dev-fp8.safetensors already exists in $FLUX1_DEV_FILE. Skipping download."
+#fi
 
 echo "All tasks completed."
