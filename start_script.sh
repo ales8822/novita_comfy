@@ -178,18 +178,18 @@ if [[ ! -d "$LORAS_DIR" ]]; then
 fi
 
 LORAS_FILE_IDS=(
-  "1R8xTsUpYkhkKzPTQP2np-lZ3jWRYax17" # Oiled Skin ( OiledSkin )
+#   "1R8xTsUpYkhkKzPTQP2np-lZ3jWRYax17" # Oiled Skin ( OiledSkin )
   "1nVU8QX7aWyKkcR0nBC1M8fNhAzJ2yhdc" # Cinematic Photography Style XL + F1D
-  "1pMqIDXYhSL0qkKeyE7I9RTtDjJokkKCi" # Dynamic Poses FLUX + SDXL 2.0
+#   "1pMqIDXYhSL0qkKeyE7I9RTtDjJokkKCi" # Dynamic Poses FLUX + SDXL 2.0
   "1d40-6De13Pso-apOX1ItUBRl7slEVDUX" # Hyper Realism Lora by aidma 0.3
-  "1dR3qUCQZPcm3dw2ApI_buOLsh5qp-zrq" # Vixon's Pony Styles - gothic neon
-  "1Blkg72iJDINiKxifERQcDiuq8u_3uOCz" # FluxSideboob
-  "1MP36YoGsvfjILtq33JZjyX6OckejNcZF" # Hand v2
+#   "1dR3qUCQZPcm3dw2ApI_buOLsh5qp-zrq" # Vixon's Pony Styles - gothic neon
+#   "1Blkg72iJDINiKxifERQcDiuq8u_3uOCz" # FluxSideboob
+#   "1MP36YoGsvfjILtq33JZjyX6OckejNcZF" # Hand v2
   "17bGEBIGiFBGe9vzybGONaxipf6wg4Dnb" # bustyFC-2.1
   "1VudJ-wgW2IyjKNUVtg7iqUNdrx2IB1ql" # roundassv16_Flux
   "19SNMZjLRNHPwpfOBztHDaQPrkHOPJs6z" # NSWF_master
   "1Lh3qqm6Ga7jWSElO04fP5IBQsFUDuHQd" # hourglassv2_flux
-  "1au4LXdJCp6a0aFVjEcO4yJHGYaqtIKKH" # All_in_one_nipples
+#   "1au4LXdJCp6a0aFVjEcO4yJHGYaqtIKKH" # All_in_one_nipples
   "1xwHR7j5Ir6cEVxzrFp2-91g84X8Nopjs" # aidmaMJ6.1-v0.4
   "1u56I0SkYZJFGOjho6OqUbsP4KOTWae3A" # Movie Poster - CE (mvpstrCE style)
   "1VmsjptWMLPhgd3RkS_4KlYBIyU5_UUW2" # Famous Tits | Inspired breasts | Flux + Pony
