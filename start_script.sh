@@ -12,36 +12,36 @@ echo "wget, git, python3, python3-pip installed successfully!"
 # Step 2: Download & Install ComfyUI
 ##############################################
 
-# WORKSPACE_DIR="workspace"
-# COMFYUI_REPO="https://github.com/comfyanonymous/ComfyUI.git"
+WORKSPACE_DIR="workspace"
+COMFYUI_REPO="https://github.com/comfyanonymous/ComfyUI.git"
 
-# # Verify we are in the parent directory of WORKSPACE_DIR
-# if [[ ! -d "$WORKSPACE_DIR" ]]; then
-#     echo "Error: '$WORKSPACE_DIR' does not exist. Please run this script from the directory containing '$WORKSPACE_DIR'." >&2
-#     exit 1
-# fi
+# Verify we are in the parent directory of WORKSPACE_DIR
+if [[ ! -d "$WORKSPACE_DIR" ]]; then
+    echo "Error: '$WORKSPACE_DIR' does not exist. Please run this script from the directory containing '$WORKSPACE_DIR'." >&2
+    exit 1
+fi
 
-# cd "$WORKSPACE_DIR"
+cd "$WORKSPACE_DIR"
 
-# if [[ ! -d "ComfyUI" ]]; then
-#     echo "Cloning ComfyUI repository..."
-#     if ! git clone "$COMFYUI_REPO"; then
-#         echo "Failed to clone ComfyUI. Please ensure Git is installed and try again." >&2
-#         exit 1
-#     fi
-# else
-#     echo "ComfyUI directory already exists, skipping clone."
-# fi
+if [[ ! -d "ComfyUI" ]]; then
+    echo "Cloning ComfyUI repository..."
+    if ! git clone "$COMFYUI_REPO"; then
+        echo "Failed to clone ComfyUI. Please ensure Git is installed and try again." >&2
+        exit 1
+    fi
+else
+    echo "ComfyUI directory already exists, skipping clone."
+fi
 
-# cd ComfyUI
+cd ComfyUI
 
-# echo "Installing Python dependencies for ComfyUI..."
-# if ! pip install -r requirements.txt; then
-#     echo "pip install failed. Check for errors above." >&2
-#     exit 1
-# fi
+echo "Installing Python dependencies for ComfyUI..."
+if ! pip install -r requirements.txt; then
+    echo "pip install failed. Check for errors above." >&2
+    exit 1
+fi
 
-# echo "ComfyUI installation complete."
+echo "ComfyUI installation complete."
 
 ##############################################
 # Step 3: Download & Install ComfyUI Manager
@@ -221,26 +221,26 @@ fi
 # Step 8: Download flux1-dev checkpoint
 ##############################################
 
-#FLUX1_DEV_URL="https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
-#FLUX1_DEV_FILE="models/checkpoints/flux1-dev-fp8.safetensors"
+FLUX1_DEV_URL="https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
+FLUX1_DEV_FILE="models/checkpoints/flux1-dev-fp8.safetensors"
 
-#if [[ ! -d "models/checkpoints" ]]; then
-#    echo "Error: models/checkpoints directory does not exist in ComfyUI. Please create it or check your setup." >&2
-#    exit 1
-#fi
+if [[ ! -d "models/checkpoints" ]]; then
+   echo "Error: models/checkpoints directory does not exist in ComfyUI. Please create it or check your setup." >&2
+   exit 1
+fi
 
-#if [[ ! -f "$FLUX1_DEV_FILE" ]]; then
-#    echo "Downloading flux1-dev-fp8.safetensors into $FLUX1_DEV_FILE..."
- #   wget -O "$FLUX1_DEV_FILE" "$FLUX1_DEV_URL"
+if [[ ! -f "$FLUX1_DEV_FILE" ]]; then
+   echo "Downloading flux1-dev-fp8.safetensors into $FLUX1_DEV_FILE..."
+   wget -O "$FLUX1_DEV_FILE" "$FLUX1_DEV_URL"
 
- #   if [[ -f "$FLUX1_DEV_FILE" ]]; then
- #       echo "flux1-dev-fp8.safetensors successfully downloaded to $FLUX1_DEV_FILE."
- #   else
- #       echo "Download failed for flux1-dev-fp8.safetensors. Please check the URL and try again." >&2
- #       exit 1
- #   fi
-#else
- #   echo "flux1-dev-fp8.safetensors already exists in $FLUX1_DEV_FILE. Skipping download."
-#fi
+   if [[ -f "$FLUX1_DEV_FILE" ]]; then
+       echo "flux1-dev-fp8.safetensors successfully downloaded to $FLUX1_DEV_FILE."
+   else
+       echo "Download failed for flux1-dev-fp8.safetensors. Please check the URL and try again." >&2
+       exit 1
+   fi
+else
+   echo "flux1-dev-fp8.safetensors already exists in $FLUX1_DEV_FILE. Skipping download."
+fi
 
 echo "All tasks completed."
