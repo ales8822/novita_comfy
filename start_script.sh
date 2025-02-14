@@ -255,37 +255,26 @@ LORAS_DIR="models/checkpoints/"
 # Check if the checkpoint directory exists
 if [[ ! -d "$LORAS_DIR" ]]; then
     echo "Error: $LORAS_DIR directory does not exist in ComfyUI. Please create it or check your setup." >&2
+    exit 1
 fi
 
 # Check if gdown is installed
 if ! command -v gdown &> /dev/null; then
     echo "Error: gdown is not installed. Please install it and try again." >&2
+    exit 1
 fi
 
-LORAS_FILE_IDS=(
-    "15JMhbBLjTL9KS3fhnBMpNWbElfAokk71" # juggernautXL_versionXInpaint
-)
+FILE_ID="15JMhbBLjTL9KS3fhnBMpNWbElfAokk71"
+OUTPUT_FILE="$LORAS_DIR/juggernautXL_versionXInpaint.safetensors"
+GDRIVE_URL="https://drive.google.com/uc?id=$FILE_ID"
 
-download_failed=0
+echo "Downloading checkpoint from Google Drive (ID: $FILE_ID) into $OUTPUT_FILE..."
 
-for FILE_ID in "${LORAS_FILE_IDS[@]}"; do
-    GDRIVE_URL="https://drive.google.com/uc?id=$FILE_ID"
-    # Define an output file name. Adjust the filename or extension as needed.
-    OUTPUT_FILE="$LORAS_DIR/${FILE_ID}.safetensors"
-    
-    echo "Downloading checkpoint from Google Drive (ID: $FILE_ID) into $OUTPUT_FILE..."
-    
-    if ! gdown "$GDRIVE_URL" -O "$OUTPUT_FILE"; then
-        echo "Download failed for checkpoint with ID: $FILE_ID. Please check the link and try again." >&2
-        download_failed=1
-    else
-        echo "Checkpoint with ID: $FILE_ID successfully downloaded to $OUTPUT_FILE."
-    fi
-done
+if ! gdown "$GDRIVE_URL" -O "$OUTPUT_FILE"; then
+    echo "Download failed for checkpoint with ID: $FILE_ID. Please check the link and try again." >&2
+    exit 1
+fi
 
-if [[ $download_failed -eq 1 ]]; then
-    echo "Some downloads failed, check the log." >&2
-else
-    echo "All Lora downloads completed successfully."
+echo "Checkpoint with ID: $FILE_ID successfully downloaded to $OUTPUT_FILE."
 fi
 
