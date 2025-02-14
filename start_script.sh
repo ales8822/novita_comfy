@@ -178,18 +178,18 @@ if [[ ! -d "$LORAS_DIR" ]]; then
 fi
 
 LORAS_FILE_IDS=(
-#   "1R8xTsUpYkhkKzPTQP2np-lZ3jWRYax17" # Oiled Skin ( OiledSkin )
+  "1R8xTsUpYkhkKzPTQP2np-lZ3jWRYax17" # Oiled Skin ( OiledSkin )
   "1nVU8QX7aWyKkcR0nBC1M8fNhAzJ2yhdc" # Cinematic Photography Style XL + F1D
-#   "1pMqIDXYhSL0qkKeyE7I9RTtDjJokkKCi" # Dynamic Poses FLUX + SDXL 2.0
+  "1pMqIDXYhSL0qkKeyE7I9RTtDjJokkKCi" # Dynamic Poses FLUX + SDXL 2.0
   "1d40-6De13Pso-apOX1ItUBRl7slEVDUX" # Hyper Realism Lora by aidma 0.3
-#   "1dR3qUCQZPcm3dw2ApI_buOLsh5qp-zrq" # Vixon's Pony Styles - gothic neon
-#   "1Blkg72iJDINiKxifERQcDiuq8u_3uOCz" # FluxSideboob
-#   "1MP36YoGsvfjILtq33JZjyX6OckejNcZF" # Hand v2
+  "1dR3qUCQZPcm3dw2ApI_buOLsh5qp-zrq" # Vixon's Pony Styles - gothic neon
+  "1Blkg72iJDINiKxifERQcDiuq8u_3uOCz" # FluxSideboob
+  "1MP36YoGsvfjILtq33JZjyX6OckejNcZF" # Hand v2
   "17bGEBIGiFBGe9vzybGONaxipf6wg4Dnb" # bustyFC-2.1
   "1VudJ-wgW2IyjKNUVtg7iqUNdrx2IB1ql" # roundassv16_Flux
   "19SNMZjLRNHPwpfOBztHDaQPrkHOPJs6z" # NSWF_master
   "1Lh3qqm6Ga7jWSElO04fP5IBQsFUDuHQd" # hourglassv2_flux
-#   "1au4LXdJCp6a0aFVjEcO4yJHGYaqtIKKH" # All_in_one_nipples
+  "1au4LXdJCp6a0aFVjEcO4yJHGYaqtIKKH" # All_in_one_nipples
   "1xwHR7j5Ir6cEVxzrFp2-91g84X8Nopjs" # aidmaMJ6.1-v0.4
   "1u56I0SkYZJFGOjho6OqUbsP4KOTWae3A" # Movie Poster - CE (mvpstrCE style)
   "1VmsjptWMLPhgd3RkS_4KlYBIyU5_UUW2" # Famous Tits | Inspired breasts | Flux + Pony
@@ -222,7 +222,7 @@ fi
 ##############################################
 
 FLUX1_DEV_URL="https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
-FLUX1_DEV_FILE="models/checkpoints/flux1-dev-fp8.safetensors"
+FLUX1_DEV_FILE="models/diffusion_models/flux1-dev-fp8.safetensors"
 
 if [[ ! -d "models/checkpoints" ]]; then
    echo "Error: models/checkpoints directory does not exist in ComfyUI. Please create it or check your setup." >&2
@@ -243,4 +243,49 @@ else
    echo "flux1-dev-fp8.safetensors already exists in $FLUX1_DEV_FILE. Skipping download."
 fi
 
-echo "All tasks completed."
+
+
+##############################################
+# Step 9: Download flux1-dev checkpoint
+##############################################
+#!/bin/bash
+
+LORAS_DIR="models/checkpoints/"
+
+# Check if the checkpoint directory exists
+if [[ ! -d "$LORAS_DIR" ]]; then
+    echo "Error: $LORAS_DIR directory does not exist in ComfyUI. Please create it or check your setup." >&2
+fi
+
+# Check if gdown is installed
+if ! command -v gdown &> /dev/null; then
+    echo "Error: gdown is not installed. Please install it and try again." >&2
+fi
+
+LORAS_FILE_IDS=(
+    "15JMhbBLjTL9KS3fhnBMpNWbElfAokk71" # juggernautXL_versionXInpaint
+)
+
+download_failed=0
+
+for FILE_ID in "${LORAS_FILE_IDS[@]}"; do
+    GDRIVE_URL="https://drive.google.com/uc?id=$FILE_ID"
+    # Define an output file name. Adjust the filename or extension as needed.
+    OUTPUT_FILE="$LORAS_DIR/${FILE_ID}.safetensors"
+    
+    echo "Downloading checkpoint from Google Drive (ID: $FILE_ID) into $OUTPUT_FILE..."
+    
+    if ! gdown "$GDRIVE_URL" -O "$OUTPUT_FILE"; then
+        echo "Download failed for checkpoint with ID: $FILE_ID. Please check the link and try again." >&2
+        download_failed=1
+    else
+        echo "Checkpoint with ID: $FILE_ID successfully downloaded to $OUTPUT_FILE."
+    fi
+done
+
+if [[ $download_failed -eq 1 ]]; then
+    echo "Some downloads failed, check the log." >&2
+else
+    echo "All Lora downloads completed successfully."
+fi
+
