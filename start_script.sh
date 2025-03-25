@@ -159,7 +159,7 @@ LORAS_FILE_IDS=(
   "1Lh3qqm6Ga7jWSElO04fP5IBQsFUDuHQd" # hourglassv2_flux
   "1au4LXdJCp6a0aFVjEcO4yJHGYaqtIKKH" # All_in_one_nipples
   "1xwHR7j5Ir6cEVxzrFp2-91g84X8Nopjs" # aidmaMJ6.1-v0.4
-  "1u56I0SkYZJFGOjho6OqUbsP4KOTWae3A" # Movie Poster - CE (mvpstrCE style)
+  "1wv_CTU8r45HVdOUXBIiTuUZYbzOmZ7GL" # Movie Poster - CE (mvpstrCE style)
   "1VmsjptWMLPhgd3RkS_4KlYBIyU5_UUW2" # Famous Tits | Inspired breasts | Flux + Pony
   "1QCpZfVKMM2bpHwxN0DZ0SqeAQqq5_Vkl" # MicroSkirt FLUX & SDXL
   "17f6VZKevKQYT47qfFoga7f7ShB5g-h9C" # BreastShaper_splendid_droplets (Flux) v3.0
